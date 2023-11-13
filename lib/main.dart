@@ -2,9 +2,20 @@ import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
 
+class GreetingWidget extends StatelessWidget {
+  final String greetingMessage;
+
+  GreetingWidget({required this.greetingMessage});
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(greetingMessage);
+  }
+}
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-  // This widget is the root of your application.
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -13,10 +24,17 @@ class MyApp extends StatelessWidget {
       // Application theme data, you can set the colors for the application as
       // you want
       theme: ThemeData(
-        primarySwatch: Colors.black,
+        primarySwatch: Colors.blue,
       ),
       // A widget which will be started on application startup
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Flutter Widgets practice'),
+        ),
+        body: Center(
+          child: GreetingWidget(greetingMessage: 'Hello, World!'),
+        ),
+      ),
     );
   }
 }
